@@ -1,3 +1,49 @@
+:root {
+    --bg-main: #1a1a1a;       /* Your new primary dark background */
+    --bg-sidebar: #111111;    /* Your new sidebar background */
+    --accent-primary: #0088cc;/* Your new primary theme brand color */
+}
+
+/* ==========================================================================
+   Theme Variable Mapping
+   ========================================================================== */
+
+/* 1. Core structural elements */
+body, html { 
+    background-color: var(--bg-main) !important; 
+}
+
+#sidebar { 
+    background-color: var(--bg-sidebar) !important; 
+}
+
+a { 
+    color: var(--accent-primary); 
+}
+
+/* 2. Overriding the Hyperspace section wrappers */
+.wrapper {
+    background-color: var(--bg-main) !important;
+}
+
+.wrapper.alt {
+    background-color: var(--bg-sidebar) !important; /* Alternating dark sections */
+}
+
+/* Force all styled subsections to inherit your variables instead of the default purple */
+.wrapper.style1, 
+.wrapper.style1-alt, 
+.wrapper.style2, 
+.wrapper.style2-alt, 
+.wrapper.style3 {
+    background-color: var(--bg-main) !important;
+}
+
+/* 3. Fixing the heading accent lines */
+h1.major:after {
+    background-image: linear-gradient(to right, var(--accent-primary), var(--bg-sidebar)) !important;
+}
+
 @import url(fontawesome-all.min.css);
 
 /*
