@@ -1,89 +1,93 @@
 :root {
-    --bg-main: #1a1a1a;       /* Primary dark charcoal background */
-    --bg-sidebar: #111111;    /* Sidebar background */
-    --accent-primary: #0088cc;/* Blue brand accent */
+    --bg-main: #1a1a1a;       /* Clean charcoal background */
+    --bg-sidebar: #111111;    /* Deep dark sidebar */
+    --accent-primary: #0088cc;/* Primary brand blue */
 }
 
 /* ==========================================================================
-   1. Fix Layout Structure & Backgrounds
+   1. Sidebar Structure & Layout Resets (Fixes the Giant Gray Box)
    ========================================================================== */
 
-/* Target the wrapper sections safely by ID to preserve layout dimensions */
-#wrapper,
-#intro,
-#one,
-#two,
-#three,
-.wrapper.style1,
-.wrapper.style2,
-.wrapper.style3 {
-    background-color: var(--bg-main) !important;
-}
-
-/* Set the sidebar panel background */
+/* Force the main sidebar container color */
 #sidebar {
     background-color: var(--bg-sidebar) !important;
 }
 
-/* Fix the sidebar inner container layout bug */
+/* Reset the inner sidebar container to prevent it from swelling into a gray block */
 #sidebar .inner {
     background: transparent !important;
     background-color: transparent !important;
+    padding: 2.5em 0 !important; /* Restores the intended native layout padding */
+    height: auto !important;
 }
 
-/* Clean up double scrollbars */
+/* Clear the double scrollbar line down the center */
 html, body {
     background-color: var(--bg-main);
     overflow-x: hidden;
 }
 
 /* ==========================================================================
-   2. Typography & Text Contrast
+   2. Main Content & Footer Fixes (Fixes the Purple Bleed)
    ========================================================================== */
 
-/* Force headers to crisp white */
+/* Target the wrapper elements strictly without breaking layout dimensions */
+#wrapper,
+.wrapper,
+#wrapper > section,
+#footer {
+    background-color: var(--bg-main) !important;
+    background-image: none !important; /* Kills any background gradient bleeds */
+}
+
+/* ==========================================================================
+   3. Typography, Links, & Borders
+   ========================================================================== */
+
+/* Clean white headings */
 h1, h2, h3, h4, h5, h6, .title {
     color: #ffffff !important;
 }
 
-/* Bring descriptive body text to a highly readable light silver */
+/* Highly legible light-silver body text */
 #wrapper p, 
 #wrapper span, 
 #wrapper li,
-#wrapper label {
+#wrapper label,
+#footer {
     color: #dddddd !important;
 }
 
-/* Ensure global links match your primary blue brand color */
+/* Brand blue for body links */
 #wrapper a {
     color: var(--accent-primary) !important;
 }
 
 /* ==========================================================================
-   3. Sidebar Navigation Links & Accent Lines
+   4. Navigation Accent & Active States
    ========================================================================== */
 
-/* Turn the active sidebar menu lines blue instead of purple */
+/* Swaps the active menu line from purple to your blue brand color */
 #sidebar nav ul li a:before {
     background-image: linear-gradient(to right, var(--accent-primary), transparent) !important;
 }
 
-/* Turn the native purple border base lines into a clean, muted gray border */
+/* Changes the purple underline base to a clean, muted border */
 #sidebar nav ul li a {
     border-bottom: solid 1px rgba(255, 255, 255, 0.1) !important;
     color: #ffffff !important;
 }
 
-/* Highlight the active section text color using your blue brand accent */
+/* Highlights the text color of the currently active section link */
 #sidebar nav ul li a.active {
     color: var(--accent-primary) !important;
 }
 
 /* ==========================================================================
-   4. Buttons & Geometric Background Lines
+   5. Interactive Elements
    ========================================================================== */
 
-/* Fix the 'Explore Our Services' ghost button outline and text */
+/* Ghost button adjustments */
 .button, 
 button, 
 input[type="submit"] {
@@ -92,7 +96,6 @@ input[type="submit"] {
     box-shadow: none !important;
 }
 
-/* Button interactive hover state */
 .button:hover, 
 button:hover, 
 input[type="submit"]:hover {
@@ -100,7 +103,7 @@ input[type="submit"]:hover {
     border-color: var(--accent-primary) !important;
 }
 
-/* Soften the massive geometric background vector lines so they don't fight the text */
+/* Mute background vector geometric lines */
 .wrapper:before {
     opacity: 0.12 !important;
 }
