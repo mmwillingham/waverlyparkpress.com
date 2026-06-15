@@ -3907,23 +3907,82 @@ input, select, textarea {
 			}
 
 		}
-/* Custom Sidebar Logo Styling */
+/* Custom Sidebar Logo Styling - Forcing Center Alignment */
 .sidebar-brand-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1.5rem 1.5rem 1.5rem; 
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  text-align: center !important;
+  padding: 2.5rem 0 1rem 0; /* Clears left/right padding that might push it off-center */
+  box-sizing: border-box;
 }
 
 .sidebar-logo {
-  width: 100%;
-  max-width: 140px;
+  width: 140px; /* Keeps a fixed consistent width */
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;        
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); 
   transition: transform 0.2s ease;
+  margin: 0 auto !important; /* Forces the browser to calculate equal margins on both sides */
 }
 
 .sidebar-logo:hover {
   transform: scale(1.02);
+}
+
+/* ==========================================================================
+   Waverly Park Press - Editorial Color Palette (Off-White & Literary Brown)
+   ========================================================================== */
+
+/* 1. Main Background Area (Right Side) */
+body, #wrapper {
+  background-color: #fcfbf9 !important; /* Premium warm off-white / book-page cream */
+  background-image: none !important;    /* Removes the original purple gradient */
+  color: #2b2623 !important;            /* Dark charcoal brown for sharp text readability */
+}
+
+/* 2. Primary Typography Color Fixes */
+h1, h2, h3, h4, h5, h6, strong {
+  color: #1a1512 !important;            /* Near-black deep brown for elegant headers */
+}
+
+p, li {
+  color: #3d3530 !important;            /* Soft, highly-readable charcoal for body text */
+}
+
+/* 3. The Sidebar / Navigation Pane (Left Side) */
+#sidebar {
+  background-color: #261f1b !important; /* Deep, rich espresso brown */
+}
+
+/* Sidebar Text & Links */
+#sidebar a, #sidebar .links a {
+  color: #dfd8d0 !important;            /* Soft linen off-white for menu items */
+  border-bottom-color: rgba(223, 216, 208, 0.15) !important;
+}
+
+#sidebar a:hover, #sidebar .links a.active {
+  color: #ffffff !important;            /* Bright white highlight on hover/active state */
+  background-color: #362d28 !important; /* Subtle warm highlight behind the active link */
+}
+
+/* 4. Button Customization (Explore Our Services) */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+  background-color: transparent !important;
+  box-shadow: inset 0 0 0 2px #261f1b !important; /* Tailored brown border */
+  color: #261f1b !important;                      /* Matching text color */
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+  background-color: #261f1b !important;            /* Solid fills the button on hover */
+  color: #fcfbf9 !important;                      /* Flips text back to book-cream */
 }
