@@ -1,0 +1,84 @@
+:root {
+    --bg-main: #1a1a1a;       /* Your new primary dark background */
+    --bg-sidebar: #111111;    /* Your new sidebar background */
+    --accent-primary: #0088cc;/* Your new primary theme brand color */
+}
+
+/* 1. Core structural elements */
+body, html { 
+    background-color: var(--bg-main) !important; 
+    color: #dddddd !important;
+}
+
+#sidebar { 
+    background-color: var(--bg-sidebar) !important; 
+}
+
+a { 
+    color: var(--accent-primary) !important; 
+}
+
+/* 2. Overriding the Hyperspace section wrappers */
+.wrapper,
+#wrapper > section {
+    background-color: var(--bg-main) !important;
+}
+
+.wrapper.alt {
+    background-color: var(--bg-sidebar) !important; 
+}
+
+.wrapper.style1, 
+.wrapper.style1-alt, 
+.wrapper.style2, 
+.wrapper.style2-alt, 
+.wrapper.style3 {
+    background-color: var(--bg-main) !important;
+}
+
+/* 3. Typography & Contrast Fixes */
+h1, h2, h3, h4, h5, h6, .title {
+    color: #ffffff !important; 
+}
+
+p, span, li {
+    color: #dddddd !important;
+}
+
+h1.major:after {
+    background-image: linear-gradient(to right, var(--accent-primary), var(--bg-sidebar)) !important;
+}
+
+/* 4. Sidebar Nav Accent Lines */
+#sidebar nav ul li a:before {
+    background-image: linear-gradient(to right, var(--accent-primary), transparent) !important;
+}
+
+#sidebar nav ul li a {
+    border-bottom: solid 1px rgba(255, 255, 255, 0.15) !important; 
+}
+
+/* 5. Buttons & Interactive Elements */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: none !important;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--accent-primary) !important;
+}
+
+/* 6. Background Grid Lines */
+.wrapper:before {
+    opacity: 0.15 !important; 
+}
