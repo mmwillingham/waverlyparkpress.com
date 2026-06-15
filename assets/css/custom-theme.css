@@ -1,42 +1,47 @@
 :root {
-    --bg-main: #1a1a1a;       /* Primary dark background */
+    --bg-main: #1a1a1a;       /* Primary dark charcoal background */
     --bg-sidebar: #111111;    /* Sidebar background */
     --accent-primary: #0088cc;/* Blue brand accent */
 }
 
 /* ==========================================================================
-   1. Fix Layout & Background Bleeds (Surgical)
+   1. Fix Layout Structure & Backgrounds
    ========================================================================== */
 
-/* Target the wrapper sections properly without destroying layout dimensions */
-#wrapper > section.wrapper,
-section.wrapper.style1,
-section.wrapper.style2,
-section.wrapper.style3 {
-    background-color: var(--bg-main);
+/* Target the wrapper sections safely by ID to preserve layout dimensions */
+#wrapper,
+#intro,
+#one,
+#two,
+#three,
+.wrapper.style1,
+.wrapper.style2,
+.wrapper.style3 {
+    background-color: var(--bg-main) !important;
 }
 
-/* Specific background override for the sidebar panel container */
+/* Set the sidebar panel background */
 #sidebar {
-    background-color: var(--bg-sidebar);
+    background-color: var(--bg-sidebar) !important;
 }
 
-/* Remove the broken double scrollbars */
+/* Fix the sidebar inner container layout bug */
+#sidebar .inner {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Clean up double scrollbars */
 html, body {
     background-color: var(--bg-main);
     overflow-x: hidden;
 }
 
-/* Prevent any logo wrappers from expanding into massive gray blocks */
-#sidebar .inner {
-    background: transparent !important;
-}
-
 /* ==========================================================================
-   2. Typography & Contrast Corrections
+   2. Typography & Text Contrast
    ========================================================================== */
 
-/* Force headers to crisp, clean white */
+/* Force headers to crisp white */
 h1, h2, h3, h4, h5, h6, .title {
     color: #ffffff !important;
 }
@@ -44,17 +49,18 @@ h1, h2, h3, h4, h5, h6, .title {
 /* Bring descriptive body text to a highly readable light silver */
 #wrapper p, 
 #wrapper span, 
-#wrapper li {
+#wrapper li,
+#wrapper label {
     color: #dddddd !important;
 }
 
 /* Ensure global links match your primary blue brand color */
 #wrapper a {
-    color: var(--accent-primary);
+    color: var(--accent-primary) !important;
 }
 
 /* ==========================================================================
-   3. Navigation Link Fixes
+   3. Sidebar Navigation Links & Accent Lines
    ========================================================================== */
 
 /* Turn the active sidebar menu lines blue instead of purple */
@@ -74,7 +80,7 @@ h1, h2, h3, h4, h5, h6, .title {
 }
 
 /* ==========================================================================
-   4. Component Cleanup (Buttons & Background Grids)
+   4. Buttons & Geometric Background Lines
    ========================================================================== */
 
 /* Fix the 'Explore Our Services' ghost button outline and text */
