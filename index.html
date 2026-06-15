@@ -24,9 +24,9 @@
 								<header id="header">
 									<a href="index.html" class="logo"><strong>Waverly Park Press</strong></a>
 									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="https://twitter.com/YourHandle" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://facebook.com/YourPage" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="https://instagram.com/YourProfile" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 									</ul>
 								</header>
 
@@ -121,11 +121,10 @@
 
 							<!-- Search Bar -->
 							<section id="search" class="alt">
-								<form id="local-search-form" onsubmit="return false;">
-									<input type="text" id="local-query" placeholder="Search this site..." onkeyup="runLocalSearch()" />
+								<form id="local-search-form" action="#" onsubmit="runLocalSearch(); return false;">
+									<input type="text" id="local-query" placeholder="Search this site..." oninput="runLocalSearch()" />
 								</form>
-								<!-- This small container will dynamically display matching results -->
-								<div id="search-results-box" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.03); padding: 10px; border-radius: 4px;"></div>
+								<div id="search-results-box" style="display:none; margin-top: 15px; background: rgba(0,0,0,0.05); padding: 12px; border-radius: 4px; border-left: 3px solid #f56a6a;"></div>
 							</section>
 
 							<!-- Navigation Menu Links -->
@@ -164,46 +163,47 @@
 		function runLocalSearch() {
 			var query = document.getElementById('local-query').value.toLowerCase().trim();
 			var resultsBox = document.getElementById('search-results-box');
-			
-			// If the user clears the search box, hide the results container
+
+			// If the search string is clear or empty, hide the dropdown drawer
 			if (query.length < 2) {
 				resultsBox.style.display = 'none';
 				resultsBox.innerHTML = '';
 				return;
 			}
-			
-			// Define the searchable content database locally
+
+			// Local Content Indexing Database
 			var pages = [
-				{ title: "Precision Editing", id: "editing", text: "manuscript developmental copyediting line editing narrative voice pacing creative ownership proof" },
-				{ title: "Custom Design", id: "design", text: "book presentation cover designs market trends interior formatting print digital typography layout paperback" },
-				{ title: "Self-Publication Strategy", id: "publication", text: "independent publishing landscape digital footprints accounts asset deployment distribution pipeline imprint launch" },
-				{ title: "Get in Touch / Contact", id: "contact", text: "manuscript formatting goals production timeline contact email macon georgia info@waverlyparkpress.com" }
+				{ title: "Precision Editing", id: "editing", text: "manuscript developmental copyediting line editing narrative voice pacing creative ownership proof text" },
+				{ title: "Custom Design", id: "design", text: "book presentation cover designs market trends interior formatting print digital typography layout paperback graphics visual" },
+				{ title: "Self-Publication Strategy", id: "publication", text: "independent publishing landscape digital footprints accounts asset deployment distribution pipeline imprint launch kindle kdp" },
+				{ title: "Get in Touch / Contact", id: "contact", text: "manuscript formatting goals production timeline contact email macon georgia info@waverlyparkpress.com help address" }
 			];
-			
+
 			var matches = [];
-			
-			// Scan the local text arrays for matches
+
+			// Match lookup checks
 			for (var i = 0; i < pages.length; i++) {
 				if (pages[i].text.toLowerCase().includes(query) || pages[i].title.toLowerCase().includes(query)) {
 					matches.push(pages[i]);
 				}
 			}
-			
-			// Render the results instantly onto the sidebar layout
+
+			// Output building
 			if (matches.length > 0) {
 				resultsBox.style.display = 'block';
-				var htmlOutput = '<h4 style="margin: 0 0 5px 0; font-size: 0.8em; text-transform: uppercase;">Matches Found:</h4><ul style="list-style: none; padding: 0; margin: 0;">';
-				
+				var htmlOutput = '<h4 style="margin: 0 0 8px 0; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.1em; color: #777;">Matches Found:</h4><ul style="list-style: none; padding: 0; margin: 0;">';
+
 				for (var j = 0; j < matches.length; j++) {
-					htmlOutput += '<li style="margin-bottom: 5px; padding: 0;"><a href="#' + matches[j].id + '" style="font-size: 0.9em; font-weight: bold; border: none; display: block;" onclick="document.getElementById(\'search-results-box\').style.display=\'none\';">' + matches[j].title + '</a></li>';
+					htmlOutput += '<li style="margin-bottom: 6px; padding: 0; line-height: 1.3;"><a href="#' + matches[j].id + '" style="font-size: 0.9em; font-weight: 600; border: none; display: block; color: #f56a6a !important;" onclick="document.getElementById(\'search-results-box\').style.display=\'none\'; document.getElementById(\'local-query\').value=\'\';">' + matches[j].title + '</a></li>';
 				}
-				
+
 				htmlOutput += '</ul>';
 				resultsBox.innerHTML = htmlOutput;
 			} else {
 				resultsBox.style.display = 'block';
-				resultsBox.innerHTML = '<span style="font-size: 0.85em; color: #888;">No matches found.</span>';
+				resultsBox.innerHTML = '<span style="font-size: 0.85em; color: #999; font-style: italic;">No specific matches found.</span>';
 			}
 		}
+		</script>
 		</body>
 </html>
