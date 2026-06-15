@@ -120,13 +120,13 @@
 						<div class="inner">
 
 							<!-- Search Bar -->
-								<section id="search" class="alt">
-									<form method="get" action="https://www.google.com/search" target="_blank">
-										<input type="text" name="q" id="query" placeholder="Search waverlyparkpress.com..." />
-										<!-- This hidden input restricts search results strictly to your domain -->
-										<input type="hidden" name="as_sitesearch" value="waverlyparkpress.com" />
-									</form>
-								</section>
+							<section id="search" class="alt">
+								<form id="local-search-form" onsubmit="return false;">
+									<input type="text" id="local-query" placeholder="Search this site..." onkeyup="runLocalSearch()" />
+								</form>
+								<!-- This small container will dynamically display matching results -->
+								<div id="search-results-box" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.03); padding: 10px; border-radius: 4px;"></div>
+							</section>
 
 							<!-- Navigation Menu Links -->
 								<nav id="menu">
@@ -159,5 +159,51 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-	</body>
+		<!-- Local Content Search Engine -->
+		<script>
+		function runLocalSearch() {
+			var query = document.getElementById('local-query').value.toLowerCase().trim();
+			var resultsBox = document.getElementById('search-results-box');
+			
+			// If the user clears the search box, hide the results container
+			if (query.length < 2) {
+				resultsBox.style.display = 'none';
+				resultsBox.innerHTML = '';
+				return;
+			}
+			
+			// Define the searchable content database locally
+			var pages = [
+				{ title: "Precision Editing", id: "editing", text: "manuscript developmental copyediting line editing narrative voice pacing creative ownership proof" },
+				{ title: "Custom Design", id: "design", text: "book presentation cover designs market trends interior formatting print digital typography layout paperback" },
+				{ title: "Self-Publication Strategy", id: "publication", text: "independent publishing landscape digital footprints accounts asset deployment distribution pipeline imprint launch" },
+				{ title: "Get in Touch / Contact", id: "contact", text: "manuscript formatting goals production timeline contact email macon georgia info@waverlyparkpress.com" }
+			];
+			
+			var matches = [];
+			
+			// Scan the local text arrays for matches
+			for (var i = 0; i < pages.length; i++) {
+				if (pages[i].text.toLowerCase().includes(query) || pages[i].title.toLowerCase().includes(query)) {
+					matches.push(pages[i]);
+				}
+			}
+			
+			// Render the results instantly onto the sidebar layout
+			if (matches.length > 0) {
+				resultsBox.style.display = 'block';
+				var htmlOutput = '<h4 style="margin: 0 0 5px 0; font-size: 0.8em; text-transform: uppercase;">Matches Found:</h4><ul style="list-style: none; padding: 0; margin: 0;">';
+				
+				for (var j = 0; j < matches.length; j++) {
+					htmlOutput += '<li style="margin-bottom: 5px; padding: 0;"><a href="#' + matches[j].id + '" style="font-size: 0.9em; font-weight: bold; border: none; display: block;" onclick="document.getElementById(\'search-results-box\').style.display=\'none\';">' + matches[j].title + '</a></li>';
+				}
+				
+				htmlOutput += '</ul>';
+				resultsBox.innerHTML = htmlOutput;
+			} else {
+				resultsBox.style.display = 'block';
+				resultsBox.innerHTML = '<span style="font-size: 0.85em; color: #888;">No matches found.</span>';
+			}
+		}
+		</body>
 </html>
