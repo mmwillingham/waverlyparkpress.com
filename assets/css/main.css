@@ -4,46 +4,6 @@
     --accent-primary: #0088cc;/* Your new primary theme brand color */
 }
 
-/* ==========================================================================
-   Theme Variable Mapping
-   ========================================================================== */
-
-/* 1. Core structural elements */
-body, html { 
-    background-color: var(--bg-main) !important; 
-}
-
-#sidebar { 
-    background-color: var(--bg-sidebar) !important; 
-}
-
-a { 
-    color: var(--accent-primary); 
-}
-
-/* 2. Overriding the Hyperspace section wrappers */
-.wrapper {
-    background-color: var(--bg-main) !important;
-}
-
-.wrapper.alt {
-    background-color: var(--bg-sidebar) !important; /* Alternating dark sections */
-}
-
-/* Force all styled subsections to inherit your variables instead of the default purple */
-.wrapper.style1, 
-.wrapper.style1-alt, 
-.wrapper.style2, 
-.wrapper.style2-alt, 
-.wrapper.style3 {
-    background-color: var(--bg-main) !important;
-}
-
-/* 3. Fixing the heading accent lines */
-h1.major:after {
-    background-image: linear-gradient(to right, var(--accent-primary), var(--bg-sidebar)) !important;
-}
-
 @import url(fontawesome-all.min.css);
 
 /*
@@ -4032,3 +3992,89 @@ button:hover,
   background-color: #261f1b !important;            /* Solid fills the button on hover */
   color: #fcfbf9 !important;                      /* Flips text back to book-cream */
 }
+
+/* ==========================================================================
+   Theme Variable Mapping
+   ========================================================================== */
+
+/* 1. Core structural elements */
+body, html { 
+    background-color: var(--bg-main) !important; 
+}
+
+#sidebar { 
+    background-color: var(--bg-sidebar) !important; 
+}
+
+a { 
+    color: var(--accent-primary); 
+}
+
+/* 2. Overriding the Hyperspace section wrappers */
+.wrapper {
+    background-color: var(--bg-main) !important;
+}
+
+.wrapper.alt {
+    background-color: var(--bg-sidebar) !important; /* Alternating dark sections */
+}
+
+/* Force all styled subsections to inherit your variables instead of the default purple */
+.wrapper.style1, 
+.wrapper.style1-alt, 
+.wrapper.style2, 
+.wrapper.style2-alt, 
+.wrapper.style3 {
+    background-color: var(--bg-main) !important;
+}
+
+/* 3. Fixing the heading accent lines */
+h1.major:after {
+    background-image: linear-gradient(to right, var(--accent-primary), var(--bg-sidebar)) !important;
+}
+
+/* Change sidebar menu accent lines */
+#sidebar nav ul li a:before {
+    background-image: linear-gradient(to right, var(--accent-primary), transparent) !important;
+}
+
+#sidebar nav ul li a {
+    border-bottom: solid 1px rgba(255, 255, 255, 0.15) !important; /* Replaces the dark purple base line */
+}
+
+/* Force headers to be bright white */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+}
+
+/* Force body text and descriptions to a readable light silver/grey */
+p, html, body {
+    color: #dddddd !important;
+}
+
+/* Fix the 'Explore Our Services' button contrast */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: none !important;
+}
+
+/* Give buttons a clean hover state over the dark background */
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--accent-primary) !important;
+}
+
+/* Optional: Soften or hide the large intersecting background grid lines */
+.wrapper:before {
+    opacity: 0.15 !important; /* Lower this number to make them fainter, or 0 to remove */
+}
+
