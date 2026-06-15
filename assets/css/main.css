@@ -3907,3 +3907,23 @@ input, select, textarea {
 			}
 
 		}
+/* Custom Sidebar Logo Styling */
+.sidebar-brand-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1.5rem 1.5rem 1.5rem; 
+}
+
+.sidebar-logo {
+  width: 100%;
+  max-width: 140px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.sidebar-logo:hover {
+  transform: scale(1.02);
+}
