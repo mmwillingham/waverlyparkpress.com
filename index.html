@@ -121,8 +121,10 @@
 
 							<!-- Search Bar -->
 								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
+									<form method="get" action="https://www.google.com/search" target="_blank">
+										<input type="text" name="q" id="query" placeholder="Search waverlyparkpress.com..." />
+										<!-- This hidden input restricts search results strictly to your domain -->
+										<input type="hidden" name="as_sitesearch" value="waverlyparkpress.com" />
 									</form>
 								</section>
 
