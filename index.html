@@ -164,44 +164,53 @@
 			var query = document.getElementById('local-query').value.toLowerCase().trim();
 			var resultsBox = document.getElementById('search-results-box');
 
-			// If the search string is clear or empty, hide the dropdown drawer
+			// Hide results if query is too short or empty
 			if (query.length < 2) {
 				resultsBox.style.display = 'none';
 				resultsBox.innerHTML = '';
 				return;
 			}
-
-			// Local Content Indexing Database
-			var pages = [
-				{ title: "Precision Editing", id: "editing", text: "manuscript developmental copyediting line editing narrative voice pacing creative ownership proof text" },
-				{ title: "Custom Design", id: "design", text: "book presentation cover designs market trends interior formatting print digital typography layout paperback graphics visual" },
-				{ title: "Self-Publication Strategy", id: "publication", text: "independent publishing landscape digital footprints accounts asset deployment distribution pipeline imprint launch kindle kdp" },
-				{ title: "Get in Touch / Contact", id: "contact", text: "manuscript formatting goals production timeline contact email macon georgia info@waverlyparkpress.com help address" }
-			];
-
+			
 			var matches = [];
-
-			// Match lookup checks
-			for (var i = 0; i < pages.length; i++) {
-				if (pages[i].text.toLowerCase().includes(query) || pages[i].title.toLowerCase().includes(query)) {
-					matches.push(pages[i]);
+			
+			// Dynamically scan every active <section> on the page
+			$('section.main-section, #main section').each(function() {
+				var section = $(this);
+				var sectionId = section.attr('id');
+				
+				// Skip sections that don't have an ID set
+				if (!sectionId) return;
+				
+				// Grab the clean heading text for the display link
+				var sectionTitle = section.find('h2, h1').first().text().trim();
+				if (!sectionTitle) sectionTitle = sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+				
+				// Grab all readable text inside this specific section
+				var sectionText = section.text().toLowerCase();
+				
+				// If the typed keyword matches anything in this section, save it
+				if (sectionText.indexOf(query) !== -1) {
+					matches.push({
+						title: sectionTitle,
+						id: sectionId
+					});
 				}
-			}
-
-			// Output building
+			});
+			
+			// Display results inside the sidebar drawer
 			if (matches.length > 0) {
 				resultsBox.style.display = 'block';
 				var htmlOutput = '<h4 style="margin: 0 0 8px 0; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.1em; color: #777;">Matches Found:</h4><ul style="list-style: none; padding: 0; margin: 0;">';
-
+				
 				for (var j = 0; j < matches.length; j++) {
 					htmlOutput += '<li style="margin-bottom: 6px; padding: 0; line-height: 1.3;"><a href="#' + matches[j].id + '" style="font-size: 0.9em; font-weight: 600; border: none; display: block; color: #f56a6a !important;" onclick="document.getElementById(\'search-results-box\').style.display=\'none\'; document.getElementById(\'local-query\').value=\'\';">' + matches[j].title + '</a></li>';
 				}
-
+				
 				htmlOutput += '</ul>';
 				resultsBox.innerHTML = htmlOutput;
 			} else {
 				resultsBox.style.display = 'block';
-				resultsBox.innerHTML = '<span style="font-size: 0.85em; color: #999; font-style: italic;">No specific matches found.</span>';
+				resultsBox.innerHTML = '<span style="font-size: 0.85em; color: #999; font-style: italic;">No matches found.</span>';
 			}
 		}
 		</script>
