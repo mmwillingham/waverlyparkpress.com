@@ -1,84 +1,100 @@
 :root {
-    --bg-main: #1a1a1a;       /* Your new primary dark background */
-    --bg-sidebar: #111111;    /* Your new sidebar background */
-    --accent-primary: #0088cc;/* Your new primary theme brand color */
+    --bg-main: #1a1a1a;       /* Primary dark background */
+    --bg-sidebar: #111111;    /* Sidebar background */
+    --accent-primary: #0088cc;/* Blue brand accent */
 }
 
-/* 1. Core structural elements */
-body, html { 
-    background-color: var(--bg-main) !important; 
-    color: #dddddd !important;
+/* ==========================================================================
+   1. Fix Layout & Background Bleeds (Surgical)
+   ========================================================================== */
+
+/* Target the wrapper sections properly without destroying layout dimensions */
+#wrapper > section.wrapper,
+section.wrapper.style1,
+section.wrapper.style2,
+section.wrapper.style3 {
+    background-color: var(--bg-main);
 }
 
-#sidebar { 
-    background-color: var(--bg-sidebar) !important; 
+/* Specific background override for the sidebar panel container */
+#sidebar {
+    background-color: var(--bg-sidebar);
 }
 
-a { 
-    color: var(--accent-primary) !important; 
+/* Remove the broken double scrollbars */
+html, body {
+    background-color: var(--bg-main);
+    overflow-x: hidden;
 }
 
-/* 2. Overriding the Hyperspace section wrappers */
-.wrapper,
-#wrapper > section {
-    background-color: var(--bg-main) !important;
+/* Prevent any logo wrappers from expanding into massive gray blocks */
+#sidebar .inner {
+    background: transparent !important;
 }
 
-.wrapper.alt {
-    background-color: var(--bg-sidebar) !important; 
-}
+/* ==========================================================================
+   2. Typography & Contrast Corrections
+   ========================================================================== */
 
-.wrapper.style1, 
-.wrapper.style1-alt, 
-.wrapper.style2, 
-.wrapper.style2-alt, 
-.wrapper.style3 {
-    background-color: var(--bg-main) !important;
-}
-
-/* 3. Typography & Contrast Fixes */
+/* Force headers to crisp, clean white */
 h1, h2, h3, h4, h5, h6, .title {
-    color: #ffffff !important; 
+    color: #ffffff !important;
 }
 
-p, span, li {
+/* Bring descriptive body text to a highly readable light silver */
+#wrapper p, 
+#wrapper span, 
+#wrapper li {
     color: #dddddd !important;
 }
 
-h1.major:after {
-    background-image: linear-gradient(to right, var(--accent-primary), var(--bg-sidebar)) !important;
+/* Ensure global links match your primary blue brand color */
+#wrapper a {
+    color: var(--accent-primary);
 }
 
-/* 4. Sidebar Nav Accent Lines */
+/* ==========================================================================
+   3. Navigation Link Fixes
+   ========================================================================== */
+
+/* Turn the active sidebar menu lines blue instead of purple */
 #sidebar nav ul li a:before {
     background-image: linear-gradient(to right, var(--accent-primary), transparent) !important;
 }
 
+/* Turn the native purple border base lines into a clean, muted gray border */
 #sidebar nav ul li a {
-    border-bottom: solid 1px rgba(255, 255, 255, 0.15) !important; 
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
 }
 
-/* 5. Buttons & Interactive Elements */
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-button,
-.button {
+/* Highlight the active section text color using your blue brand accent */
+#sidebar nav ul li a.active {
+    color: var(--accent-primary) !important;
+}
+
+/* ==========================================================================
+   4. Component Cleanup (Buttons & Background Grids)
+   ========================================================================== */
+
+/* Fix the 'Explore Our Services' ghost button outline and text */
+.button, 
+button, 
+input[type="submit"] {
     color: #ffffff !important;
     border-color: rgba(255, 255, 255, 0.4) !important;
     box-shadow: none !important;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover,
-button:hover,
-.button:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+/* Button interactive hover state */
+.button:hover, 
+button:hover, 
+input[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
     border-color: var(--accent-primary) !important;
 }
 
-/* 6. Background Grid Lines */
+/* Soften the massive geometric background vector lines so they don't fight the text */
 .wrapper:before {
-    opacity: 0.15 !important; 
+    opacity: 0.12 !important;
 }
