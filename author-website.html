@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Author Website Creation - Waverly Park Press</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- MAIN CONTENT AREA -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Waverly Park Press</strong></a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/waverlypress" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://facebook.com/YourPage" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="https://instagram.com/YourProfile" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Author Website Creation -->
+								<section id="author-website" class="main-section">
+									<header class="major">
+										<h1>Author Website Creation</h1>
+									</header>
+
+									<h2>Digital Infrastructure</h2>
+									<p>Expert handling of domain registration, secure hosting setup, and professional email configuration.</p>
+
+									<hr class="major" />
+
+									<h2>Custom Brand Design</h2>
+									<p>Development of high-performance, responsive websites tailored to your genre, featuring integrated book portfolios, media kits, and reader engagement tools.</p>
+
+									<hr class="major" />
+
+									<h2>Platform Management</h2>
+									<p>Strategic implementation on robust, user-friendly platforms designed for long-term scalability.</p>
+
+									<hr class="major" />
+
+									<h2>Ongoing Maintenance</h2>
+									<p>Proactive oversight of site performance, security updates, and content additions, allowing you to focus entirely on your writing.</p>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- THE SIDEBAR PANEL AREA -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search Bar -->
+							<section id="search" class="alt">
+								<form id="local-search-form" action="#" onsubmit="runLocalSearch(); return false;">
+									<input type="text" id="local-query" placeholder="Search this site..." oninput="runLocalSearch()" />
+								</form>
+								<div id="search-results-box" style="display:none; margin-top: 15px; background: rgba(0,0,0,0.05); padding: 12px; border-radius: 4px; border-left: 3px solid #f56a6a;"></div>
+							</section>
+
+							<!-- Navigation Menu Links -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html#banner">Home</a></li>
+										<li><a href="index.html#editing">Precision Editing</a></li>
+										<li><a href="index.html#design">Custom Design</a></li>
+										<li><a href="index.html#publication">Self-Publication</a></li>
+										<li><a href="author-website.html">Author Website Creation</a></li>
+										<li><a href="index.html#contact">Contact</a></li>
+									</ul>
+								</nav>
+
+							<!-- Footer Block -->
+								<footer id="footer">
+									<p class="copyright">&copy; Waverly Park Press. All rights reserved.<br />Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Template Framework Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+		<!-- Local Content Search Engine -->
+		<script>
+		function runLocalSearch() {
+			var query = document.getElementById('local-query').value.toLowerCase().trim();
+			var resultsBox = document.getElementById('search-results-box');
+
+			if (query.length < 2) {
+				resultsBox.style.display = 'none';
+				resultsBox.innerHTML = '';
+				return;
+			}
+
+			var matches = [];
+
+			$('section.main-section, #main section').each(function() {
+				var section = $(this);
+				var sectionId = section.attr('id');
+
+				if (!sectionId) return;
+
+				var sectionTitle = section.find('h2, h1').first().text().trim();
+				if (!sectionTitle) sectionTitle = sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+
+				var sectionText = section.text().toLowerCase();
+
+				if (sectionText.indexOf(query) !== -1) {
+					matches.push({
+						title: sectionTitle,
+						id: sectionId
+					});
+				}
+			});
+
+			if (matches.length > 0) {
+				resultsBox.style.display = 'block';
+				var htmlOutput = '<h4 style="margin: 0 0 8px 0; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.1em; color: #777;">Matches Found:</h4><ul style="list-style: none; padding: 0; margin: 0;">';
+
+				for (var j = 0; j < matches.length; j++) {
+					htmlOutput += '<li style="margin-bottom: 6px; padding: 0; line-height: 1.3;"><a href="#' + matches[j].id + '" style="font-size: 0.9em; font-weight: 600; border: none; display: block; color: #f56a6a !important;" onclick="document.getElementById(\'search-results-box\').style.display=\'none\'; document.getElementById(\'local-query\').value=\'\';">' + matches[j].title + '</a></li>';
+				}
+
+				htmlOutput += '</ul>';
+				resultsBox.innerHTML = htmlOutput;
+			} else {
+				resultsBox.style.display = 'block';
+				resultsBox.innerHTML = '<span style="font-size: 0.85em; color: #999; font-style: italic;">No matches found.</span>';
+			}
+		}
+		</script>
+		</body>
+</html>
