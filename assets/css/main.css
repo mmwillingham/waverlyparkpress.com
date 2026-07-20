@@ -2185,6 +2185,28 @@ button,
     #banner .image {
       max-height: 35vh; } }
 
+/* Site overrides */
+#banner .image.banner-logo {
+  width: auto;
+  max-width: 40%;
+  margin-left: auto;
+  margin-right: 0; }
+  #banner .image.banner-logo img {
+    height: auto;
+    max-height: 12em;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain; }
+  @media screen and (orientation: portrait) {
+    #banner .image.banner-logo {
+      max-width: 100%;
+      margin: 0 auto 4em;
+      height: auto;
+      text-align: center; }
+      #banner .image.banner-logo img {
+        max-height: 10em;
+        margin: 0 auto; } }
+
 /* Footer */
 #footer .copyright {
   color: #9fa3a6;
